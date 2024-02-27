@@ -1,0 +1,115 @@
+
+{% extends "Bookstore/main.html"%}
+
+{% block content %}
+<h1 class="p-5">Dashboard </h1>
+
+<div class="container text-center ">
+    <div class="row">
+      <div class="col bg-primary bg-gradient p-2 text-white">
+        Total Orders : {{torders}}
+      </div>
+      <div class="col p-2 bg-warning bg-gradient text-white">
+        Pending Orders : {{porders}}
+      </div>
+      <div class="col bg-success p-2 text-white">
+        Delivered Orders : {{dorders}}
+      </div>
+      <div class="col bg-info p-2 bg-gradient text-white">
+        Inprogress Orders : {{iorders}}
+      </div>
+      <div class="col bg-danger bg-gradient p-2 text-white">
+        Out of order : {{oorders}}
+      </div>
+    </div>
+  </div>
+{% comment %} ----------------- {% endcomment %}
+<div class="container ">
+    <div class="row pt-5">
+        <div class="col">
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Customers</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+              <a class="btn btn-success" href="#">ADD</a>
+              </h6>
+              <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for item in customers %}
+                    <tr>
+                    <td>{{item.name}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.age}}</td>
+                    <td>
+                        <a class="text-primary" href="#"=>
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                        <a class="text-danger" href="#"=>
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            </div>
+          </div>
+      </div>
+    </div>
+    {% comment %} --------------- {% endcomment %}
+    <div class="row pt-5">
+        <div class="col">
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Orders</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                <a class="btn btn-success" href="#">ADD</a>
+                </h6>
+              <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Book</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for item in orders %}
+                    <tr>
+                    <td>{{item.date_created}}</td>
+                    <td>{{item.fk_customer}}</td>
+                    <td>{{item.fk_book}}</td>
+                    <td>{{item.status}}</td>
+                    <td>
+                        <a class="text-primary" href="#"=>
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                        <a class="text-danger" href="#"=>
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            </div>
+          </div>
+      </div>
+    </div>
+  
+</div>
+
+
+
+  
+{% endblock content %}
